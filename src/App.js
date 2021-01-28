@@ -15,9 +15,9 @@ class App extends Component {
 
     validateForm = (e) => {
         let msg;
-        console.log("HERE", this.state.name);
+        console.log("HERE", this.state.name, this.state.name.match(/^[.]{3,30}$/));
         e.preventDefault();
-        if (this.state.name.match(/^[.]{3,30}$/)) {
+        if (this.state.name.match(/^.{3,30}$/)) {
             msg = "Form is Complete!";
         } else {
             msg = "Form is Incomplete!";
