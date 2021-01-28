@@ -17,7 +17,7 @@ class App extends Component {
         let msg;
         console.log("HERE", this.state.name);
         e.preventDefault();
-        if (this.state.name) { // .match(/^[.]{3,30}$/) {
+        if (this.state.name.match(/^[.]{3,30}/)) {
             msg = "Form is Complete!";
         } else {
             msg = "Form is Incomplete!";
