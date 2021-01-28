@@ -6,7 +6,7 @@ class App extends Component {
 
     constructor() {
         super();
-        this.state = { name: "", message: "" }
+        this.state = { name: "", isFormValid: false }
     }
 
     handleNameChange = (event) => {
@@ -14,22 +14,24 @@ class App extends Component {
       }
 
     validateForm = (e) => {
-        let msg;
-        console.log("HERE", this.state.name, this.state.name.match(/^[.]{3,30}$/));
+        let msg, isValid;
+        
         e.preventDefault();
         if (this.state.name.match(/^.{3,30}$/)) {
-            msg = "Form is Complete!";
+            console.log("GOOD")
+            isValid = true;
         } else {
-            msg = "Form is Incomplete!";
+            isValid = false;
         }
-        this.setState({ message: msg});
+        this.setState({ isFormValid: isValid });
+        console.log("HERE", this.state);
     }
     
     render() {
         return (<div>
             <Form name={this.state.name}
             handleNameChange={this.handleNameChange} validateForm={this.validateForm}></Form>
-            <Message message={this.state.message}></Message>
+            <Message isFormValid={this.state.isFormValid}></Message>
         </div>);
     }
 }
